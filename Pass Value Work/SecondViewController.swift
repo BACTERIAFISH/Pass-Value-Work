@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SecondViewControllerDelegate: AnyObject {
+    func pass(_ viewController: SecondViewController, input: String, index: Int?)
+}
+
 class SecondViewController: UIViewController {
     
     let inputTextField = UITextField()
@@ -15,6 +19,8 @@ class SecondViewController: UIViewController {
     let backButton = UIButton()
     
     var selectedIndex: Int?
+    
+    weak var delegate: SecondViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +40,7 @@ class SecondViewController: UIViewController {
         backButton.backgroundColor = .black
         backButton.titleLabel?.textColor = .white
         backButton.setTitle("Button", for: .normal)
+        backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         view.addSubview(backButton)
         
         NSLayoutConstraint.activate([
@@ -47,6 +54,12 @@ class SecondViewController: UIViewController {
             backButton.heightAnchor.constraint(equalToConstant: 40),
             backButton.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 20)
         ])
+    }
+    
+    @objc func back() {
+        guard let delegate = delegate, let input = inputTextField.text else { return }
+        delegate.pass(self, input: input, index: selectedIndex)
+        navigationController?.popViewController(animated: true)
     }
 
 }
