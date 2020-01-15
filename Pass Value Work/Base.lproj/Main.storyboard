@@ -38,9 +38,6 @@
                                                     <state key="normal" title="Delete">
                                                         <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="deleteCell:" destination="dYK-78-H3j" eventType="touchUpInside" id="jyQ-39-YDr"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

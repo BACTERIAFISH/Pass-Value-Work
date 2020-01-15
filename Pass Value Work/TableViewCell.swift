@@ -14,8 +14,6 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var deleteButton: UIButton!
     
-    var doDelete: ((TableViewCell) -> Void)?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,10 +26,6 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    @IBAction func deleteCell(_ sender: UIButton) {
-        doDelete?(self)
     }
     
 }

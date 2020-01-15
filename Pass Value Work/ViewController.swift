@@ -25,6 +25,13 @@ class ViewController: UIViewController {
         let vc = SecondViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func deleteCell(sender: UIButton) {
+        if let cell = sender.superview?.superview as? TableViewCell, let deleteIndexPath = tableView.indexPath(for: cell) {
+            data.remove(at: deleteIndexPath.row)
+            tableView.deleteRows(at: [deleteIndexPath], with: .automatic)
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -37,12 +44,7 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         
         cell.label.text = data[indexPath.row]
-        cell.doDelete = { [weak self] deleteCell in
-            if let deleteIndexPath = tableView.indexPath(for: deleteCell) {
-                self?.data.remove(at: deleteIndexPath.row)
-                tableView.deleteRows(at: [deleteIndexPath], with: .automatic)
-            }
-        }
+        cell.deleteButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
         return cell
     }
 }
