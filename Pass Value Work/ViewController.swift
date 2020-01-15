@@ -44,7 +44,7 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         
         cell.label.text = data[indexPath.row]
-        cell.deleteButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
+        cell.delegate = self
         return cell
     }
 }
@@ -59,4 +59,14 @@ extension ViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 
+}
+
+extension ViewController: TableViewCellDelegate {
+    
+    func pass(_ tableViewCell: TableViewCell) {
+        if let indexPath = tableView.indexPath(for: tableViewCell) {
+            data.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
