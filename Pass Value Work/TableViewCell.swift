@@ -18,7 +18,7 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var deleteButton: UIButton!
     
-    var delegate: TableViewCellDelegate?
+    weak var delegate: TableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
