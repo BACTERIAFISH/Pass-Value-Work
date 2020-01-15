@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SecondViewControllerDelegate: AnyObject {
-    func pass(_ viewController: SecondViewController, input: String, index: Int?)
-}
-
 class SecondViewController: UIViewController {
     
     let inputTextField = UITextField()
@@ -20,7 +16,7 @@ class SecondViewController: UIViewController {
     
     var selectedIndex: Int?
     
-    weak var delegate: SecondViewControllerDelegate?
+    var pass: ((String, Int?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +53,8 @@ class SecondViewController: UIViewController {
     }
     
     @objc func back() {
-        guard let delegate = delegate, let input = inputTextField.text else { return }
-        delegate.pass(self, input: input, index: selectedIndex)
+        guard let input = inputTextField.text else { return }
+        pass?(input, selectedIndex)
         navigationController?.popViewController(animated: true)
     }
 

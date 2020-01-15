@@ -23,7 +23,7 @@ class ViewController: UIViewController {
 
     @IBAction func add(_ sender: Any) {
         let vc = SecondViewController()
-        vc.delegate = self
+        vc.pass = addCell(input:index:)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -31,6 +31,16 @@ class ViewController: UIViewController {
         if let cell = sender.superview?.superview as? TableViewCell, let deleteIndexPath = tableView.indexPath(for: cell) {
             data.remove(at: deleteIndexPath.row)
             tableView.deleteRows(at: [deleteIndexPath], with: .automatic)
+        }
+    }
+    
+    func addCell(input: String, index: Int?) {
+        if let index = index {
+            data[index] = input
+            tableView.reloadData()
+        } else {
+            data.append(input)
+            tableView.reloadData()
         }
     }
 }
@@ -56,7 +66,7 @@ extension ViewController: UITableViewDelegate {
         let vc = SecondViewController()
         vc.selectedIndex = indexPath.row
         vc.inputTextField.text = data[indexPath.row]
-        vc.delegate = self
+        vc.pass = addCell(input:index:)
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: false)
     }
@@ -69,19 +79,6 @@ extension ViewController: TableViewCellDelegate {
         if let indexPath = tableView.indexPath(for: tableViewCell) {
             data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
-}
-
-extension ViewController: SecondViewControllerDelegate {
-    
-    func pass(_ viewController: SecondViewController, input: String, index: Int?) {
-        if let index = index {
-            data[index] = input
-            tableView.reloadData()
-        } else {
-            data.append(input)
-            tableView.reloadData()
         }
     }
 }
