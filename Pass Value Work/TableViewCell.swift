@@ -14,6 +14,8 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var deleteButton: UIButton!
     
+    var doDelete: ((TableViewCell) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -29,7 +31,7 @@ class TableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteCell(_ sender: UIButton) {
-        
+        doDelete?(self)
     }
     
 }

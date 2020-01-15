@@ -37,6 +37,12 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         
         cell.label.text = data[indexPath.row]
+        cell.doDelete = { [weak self] deleteCell in
+            if let deleteIndexPath = tableView.indexPath(for: deleteCell) {
+                self?.data.remove(at: deleteIndexPath.row)
+                tableView.deleteRows(at: [deleteIndexPath], with: .automatic)
+            }
+        }
         return cell
     }
 }
