@@ -78,62 +78,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="VpM-pZ-h4Y" id="25x-iQ-BVB"/>
-                        <segue destination="SmF-QU-6bM" kind="show" identifier="segue" id="3hG-sy-Vkb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="136.60714285714286"/>
-        </scene>
-        <!--Second View Controller-->
-        <scene sceneID="uJO-cW-NUk">
-            <objects>
-                <viewController id="SmF-QU-6bM" customClass="SecondViewController" customModule="Pass_Value_Work" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nhI-Qc-2H4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onn-T3-Q2B">
-                                <rect key="frame" x="69" y="188" width="276" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Ftw-Yv-b7c"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0k-Py-VOa">
-                                <rect key="frame" x="69" y="468" width="276" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="DRD-68-Rua"/>
-                                </constraints>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="back:" destination="SmF-QU-6bM" eventType="touchUpInside" id="hik-eK-oWR"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="K0k-Py-VOa" firstAttribute="width" secondItem="nhI-Qc-2H4" secondAttribute="width" multiplier="2/3" id="2pe-ac-AhV"/>
-                            <constraint firstItem="onn-T3-Q2B" firstAttribute="centerX" secondItem="nhI-Qc-2H4" secondAttribute="centerX" id="5Jy-qE-9GY"/>
-                            <constraint firstItem="K0k-Py-VOa" firstAttribute="top" secondItem="nhI-Qc-2H4" secondAttribute="centerY" constant="20" id="NSb-hF-G3z"/>
-                            <constraint firstItem="K0k-Py-VOa" firstAttribute="centerX" secondItem="nhI-Qc-2H4" secondAttribute="centerX" id="Ruy-vP-5p1"/>
-                            <constraint firstItem="onn-T3-Q2B" firstAttribute="width" secondItem="nhI-Qc-2H4" secondAttribute="width" multiplier="2/3" id="nnW-qi-sdS"/>
-                            <constraint firstItem="onn-T3-Q2B" firstAttribute="top" secondItem="Cb7-WP-mip" secondAttribute="top" constant="100" id="rQ0-nY-Ny5"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Cb7-WP-mip"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Z3v-p2-0Yh"/>
-                    <connections>
-                        <outlet property="inputTextField" destination="onn-T3-Q2B" id="ftD-yP-zhM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CW9-Yb-GUA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1852" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bas-oR-XJF">

@@ -20,16 +20,10 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let index = sender as? Int, let vc = segue.destination as? SecondViewController {
-            vc.selectedIndex = index
-            vc.input = data[index]
-        }
-    }
 
     @IBAction func add(_ sender: Any) {
-        performSegue(withIdentifier: "segue", sender: nil)
+        let vc = SecondViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -50,8 +44,11 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "segue", sender: indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = SecondViewController()
+        vc.selectedIndex = indexPath.row
+        vc.inputTextField.text = data[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
 }
